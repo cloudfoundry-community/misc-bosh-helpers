@@ -1,6 +1,10 @@
 Miscellaneous BOSH helper scripts
 =================================
 
+A series of helper scripts to navigate around a maze of BOSH deployment manifests.
+
+Inspired by https://blog.starkandwayne.com/2015/04/02/inspecting-bosh-manifests-in-bash/
+
 Requirements
 ------------
 
