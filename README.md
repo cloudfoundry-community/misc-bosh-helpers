@@ -103,10 +103,14 @@ Deployment set to `.../misc-bosh-helpers/test/manifests/cf-bosh-lite.yml'
 find_micro_bosh.sh
 ------------------
 
-Find Micro BOSH manifests (like `micro_bosh.yml`\):
+Find Micro BOSH manifests (like `micro_bosh.yml`\) and the parent folder containing `bosh-workspace.yml`:
 
 ```
 $ ./bin/find_micro_bosh.sh
-./test/manifests/microboshes/aws_vpc/micro_bosh.aws_vpc.yml
-./test/manifests/microboshes/openstack_nova/micro_bosh.openstack.nova_vip.yml
+./bin/find_micro_bosh.sh
+.../microboshes/aws_vpc/micro_bosh.aws_vpc.yml .../microboshes/aws_vpc
+.../microboshes/openstack_nova/openstack/micro_bosh.openstack.nova_vip.yml .../microboshes/openstack_nova/openstack
+.../microboshes/not-deployed-yet/micro-bosh.yml not-deployed
 ```
+
+If a Micro BOSH YAML file is found but no `bosh-deployment.yml` is found in the parent folders, then `not-deployed` is returned as the 2nd item on the result line (see above).

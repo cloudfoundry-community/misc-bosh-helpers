@@ -1,5 +1,5 @@
 ---
-name: test-bosh
+name: openstack
 logging:
   level: DEBUG
 network:

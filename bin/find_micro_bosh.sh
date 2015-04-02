@@ -17,12 +17,20 @@ while getopts ":h" opt; do
   esac
 done
 
+path=$1; shift
 path=${path:-"."}
 
 possible_manifests=$(find ${path} -type f  -name '*.yml')
 for file in ${possible_manifests}; do
   cloud_plugin=$(cat ${file} | yaml2json | jq -r .cloud.plugin)
   if [[ "${cloud_plugin}" != "null" ]]; then
-    echo $file
+    deployment_dir=$(dirname $file)
+    if [[ ! -f "${deployment_dir}/bosh-deployment.yml" ]]; then
+      deployment_dir=$(dirname $deployment_dir)
+      if [[ ! -f "${deployment_dir}/bosh-deployment.yml" ]]; then
+        deployment_dir="not-deployed"
+      fi
+    fi
+    echo $file $deployment_dir
   fi
 done

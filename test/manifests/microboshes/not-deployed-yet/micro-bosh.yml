@@ -1,5 +1,5 @@
 ---
-name: aws_vpc
+name: not-deployed-yet
 logging:
   level: DEBUG
 network:
