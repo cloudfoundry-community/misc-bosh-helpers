@@ -99,3 +99,14 @@ Target the discovered BOSH manifest:
 $ bosh deployment $(./bin/find_cf_manifest_for_api.sh -u api.10.244.0.34.xip.io | awk '{print $1}')
 Deployment set to `.../misc-bosh-helpers/test/manifests/cf-bosh-lite.yml'
 ```
+
+find_micro_bosh.sh
+------------------
+
+Find Micro BOSH manifests (like `micro_bosh.yml`\):
+
+```
+$ ./bin/find_micro_bosh.sh
+./test/manifests/micro_bosh.aws_vpc.yml
+./test/manifests/micro_bosh.openstack.nova_vip.yml
+```
