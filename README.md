@@ -18,9 +18,11 @@ Finds any BOSH deployment manifests within target path and subfolders.
 ```
 $ ./bin/find_manifests.sh
 ./test/manifests/cf-bosh-lite.yml
+./test/manifests/cf-monitor-server.yml
 
 $ ./bin/find_manifests.sh test
 ./test/manifests/cf-bosh-lite.yml
+./test/manifests/cf-monitor-server.yml
 ```
 
 find_manifests_for_release.sh
@@ -31,9 +33,10 @@ Finds BOSH manifests within target path and subfolders that use specified releas
 ```
 $ ./bin/find_manifests_for_release.sh cf
 ./test/manifests/cf-bosh-lite.yml
+./test/manifests/cf-monitor-server.yml
 
-$ ./bin/find_manifests_for_release.sh cf test/manifests
-./test/manifests/cf-bosh-lite.yml
+$ ./bin/find_manifests_for_release.sh monitor-server test/manifests
+./test/manifests/cf-monitor-server.yml
 
 $ ./bin/find_manifests_for_release.sh xxx
 <no result>
@@ -49,6 +52,7 @@ Show all CF APIs for all CF BOSH manifests:
 ```
 $ ./bin/find_cf_manifest_for_api.sh
 ./test/manifests/cf-bosh-lite.yml https://api.10.244.0.34.xip.io
+./test/manifests/cf-monitor-server.yml https://api.10.244.10.34.xip.io
 ```
 
 Find a specific CF BOSH manifest for a given API hostname:
