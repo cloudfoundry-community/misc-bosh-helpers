@@ -18,13 +18,12 @@ while getopts ":h" opt; do
 done
 
 manifest_path=$1; shift
-if [[ ! -f ${manifest_path} ]]; then
-  usage
-fi
+  if [[ ! -f ${manifest_path} ]]; then
+    usage
+  fi
 
 manifest_director_uuid=$(cat ${manifest_path} | yaml2json | jq -r .director_uuid)
-
-if [[ "${manifest_director_uuid}X" == "X" ]]; then
-  echo "No director_uuid found in ${manifest_path}" >&2
-  usage
-fi
+  if [[ "${manifest_director_uuid}X" == "X" ]]; then
+    echo "No director_uuid found in ${manifest_path}" >&2
+    usage
+  fi
