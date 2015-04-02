@@ -62,3 +62,10 @@ $ ./bin/find_cf_manifest_for_api.sh -u api.10.244.0.34.xip.io
 $ ./bin/find_cf_manifest_for_api.sh -u something.unknown.com
 <no result>
 ```
+
+NOTE: use `awk` to extract the filename from each result line:
+
+```
+$ ./bin/find_cf_manifest_for_api.sh | awk '{print $1}'
+./test/manifests/cf-bosh-lite.yml
+```
