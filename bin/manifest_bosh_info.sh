@@ -27,3 +27,11 @@ manifest_director_uuid=$(cat ${manifest_path} | yaml2json | jq -r .director_uuid
     echo "No director_uuid found in ${manifest_path}" >&2
     usage
   fi
+
+manifest_director_target=$(cat ~/.bosh_config | yaml2json | jq -r ".aliases.target.\"${manifest_director_uuid}\"")
+  if [[ "${manifest_director_target}X" == "X" ]]; then
+    echo "Manifest director_uuid not found in ~/.bosh_config" >&2
+    exit 1
+  fi
+
+bosh -t ${manifest_director_target} status
