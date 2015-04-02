@@ -107,6 +107,6 @@ Find Micro BOSH manifests (like `micro_bosh.yml`\):
 
 ```
 $ ./bin/find_micro_bosh.sh
-./test/manifests/micro_bosh.aws_vpc.yml
-./test/manifests/micro_bosh.openstack.nova_vip.yml
+./test/manifests/microboshes/aws_vpc/micro_bosh.aws_vpc.yml
+./test/manifests/microboshes/openstack_nova/micro_bosh.openstack.nova_vip.yml
 ```
