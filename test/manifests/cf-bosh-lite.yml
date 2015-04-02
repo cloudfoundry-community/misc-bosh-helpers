@@ -9,7 +9,7 @@ director_uuid: c6f166bd-ddac-4f7d-9c57-d11c6ad5133b
 jobs:
 - default_networks:
   - name: cf1
-    static_ips: 
+    static_ips:
   instances: 1
   name: ha_proxy_z1
   networks:
@@ -19,7 +19,7 @@ jobs:
   properties:
     ha_proxy:
       disable_http: false
-      ssl_ciphers: 
+      ssl_ciphers:
       ssl_pem: |
         -----BEGIN CERTIFICATE-----
         MIIDETCCAfmgAwIBAgIJANZuykf1uh3LMA0GCSqGSIb3DQEBBQUAMB8xHTAbBgNV
@@ -183,7 +183,7 @@ jobs:
   name: nfs_z1
   networks:
   - name: cf1
-    static_ips: 
+    static_ips:
   persistent_disk: 102400
   properties:
     metron_agent:
@@ -291,11 +291,11 @@ jobs:
     networks:
       apps: cf1
     nfs_server:
-      address: 
+      address:
       allow_from_entries:
       - 10.244.0.0/30
       - 10.244.2.0/30
-      share: 
+      share:
   resource_pool: large_z1
   templates:
   - name: cloud_controller_ng
@@ -315,11 +315,11 @@ jobs:
     networks:
       apps: cf2
     nfs_server:
-      address: 
+      address:
       allow_from_entries:
       - 10.244.0.0/30
       - 10.244.2.0/30
-      share: 
+      share:
   resource_pool: large_z2
   templates:
   - name: cloud_controller_ng
@@ -357,11 +357,11 @@ jobs:
     networks:
       apps: cf1
     nfs_server:
-      address: 
+      address:
       allow_from_entries:
       - 10.244.0.0/30
       - 10.244.2.0/30
-      share: 
+      share:
   resource_pool: small_z1
   templates:
   - name: cloud_controller_worker
@@ -382,11 +382,11 @@ jobs:
     networks:
       apps: cf2
     nfs_server:
-      address: 
+      address:
       allow_from_entries:
       - 10.244.0.0/30
       - 10.244.2.0/30
-      share: 
+      share:
   resource_pool: small_z2
   templates:
   - name: cloud_controller_worker
@@ -455,7 +455,7 @@ jobs:
   name: runner_z2
   networks:
   - name: cf2
-    static_ips: 
+    static_ips:
   properties:
     dea_next:
       zone: z2
@@ -2313,7 +2313,7 @@ properties:
     broker_client_timeout_seconds: 70
     buildpacks:
       buildpack_directory_key: 10.244.0.34.xip.io-cc-buildpacks
-      cdn: 
+      cdn:
       fog_connection:
         local_root: "/var/vcap/store"
         provider: Local
@@ -2346,10 +2346,10 @@ properties:
     - dns
     development_mode: false
     diego_docker: false
-    directories: 
+    directories:
     disable_custom_buildpacks: false
     droplets:
-      cdn: 
+      cdn:
       droplet_directory_key: 10.244.0.34.xip.io-cc-droplets
       fog_connection:
         local_root: "/var/vcap/store"
@@ -2373,25 +2373,25 @@ properties:
     internal_api_user: internal_user
     jobs:
       app_bits_packer:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       app_events_cleanup:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       app_usage_events_cleanup:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       blobstore_delete:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       blobstore_upload:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       droplet_deletion:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       droplet_upload:
-        timeout_in_seconds: 
+        timeout_in_seconds:
       generic:
-        number_of_workers: 
+        number_of_workers:
       global:
         timeout_in_seconds: 14400
       model_deletion:
-        timeout_in_seconds: 
+        timeout_in_seconds:
     logging_level: debug2
     maximum_app_disk_in_mb: 2048
     maximum_health_check_timeout: 180
@@ -2399,14 +2399,14 @@ properties:
       capture_params: false
       developer_mode: false
       environment_name: cf-warden
-      license_key: 
+      license_key:
       monitor_mode: false
       transaction_tracer:
         enabled: true
         record_sql: obfuscated
     packages:
       app_package_directory_key: 10.244.0.34.xip.io-cc-packages
-      cdn: 
+      cdn:
       fog_connection:
         local_root: "/var/vcap/store"
         provider: Local
@@ -2418,7 +2418,7 @@ properties:
         total_routes: 1000
         total_services: 100
     resource_pool:
-      cdn: 
+      cdn:
       fog_connection:
         local_root: "/var/vcap/store"
         provider: Local
@@ -2445,7 +2445,7 @@ properties:
         ports: '53'
         protocol: udp
     srv_api_uri: https://api.10.244.0.34.xip.io
-    stacks: 
+    stacks:
     staging_upload_password: upload-password
     staging_upload_user: upload-user
     system_buildpacks:
@@ -2463,13 +2463,13 @@ properties:
       package: buildpack_php
     thresholds:
       api:
-        alert_if_above_mb: 
-        restart_if_above_mb: 
-        restart_if_consistently_above_mb: 
+        alert_if_above_mb:
+        restart_if_above_mb:
+        restart_if_consistently_above_mb:
       worker:
-        alert_if_above_mb: 
-        restart_if_above_mb: 
-        restart_if_consistently_above_mb: 
+        alert_if_above_mb:
+        restart_if_above_mb:
+        restart_if_consistently_above_mb:
     user_buildpacks: []
   ccdb:
     address: 10.244.0.30
@@ -2483,7 +2483,7 @@ properties:
     - name: ccadmin
       password: admin
       tag: admin
-  collector: 
+  collector:
   databases:
     address: 10.244.0.30
     databases:
@@ -2525,7 +2525,7 @@ properties:
   disk_quota_enabled: false
   domain: 10.244.0.34.xip.io
   doppler:
-    blacklisted_syslog_ranges: 
+    blacklisted_syslog_ranges:
     debug: false
     maxRetainedLogMessages: 100
   doppler_endpoint:
@@ -2543,44 +2543,44 @@ properties:
       username: nats
   hm9000:
     url: https://hm9000.10.244.0.34.xip.io
-  logger_endpoint: 
+  logger_endpoint:
   loggregator:
-    blacklisted_syslog_ranges: 
+    blacklisted_syslog_ranges:
     debug: false
     maxRetainedLogMessages: 100
   loggregator_endpoint:
     shared_secret: PLACEHOLDER-LOGGREGATOR-SECRET
   login:
     analytics:
-      code: 
-      domain: 
-    asset_base_url: 
+      code:
+      domain:
+    asset_base_url:
     brand: oss
     catalina_opts: "-Xmx96m -XX:MaxPermSize=64m"
     enabled: true
-    invitations_enabled: 
+    invitations_enabled:
     links:
       home: https://console.10.244.0.34.xip.io
-      network: 
+      network:
       passwd: https://console.10.244.0.34.xip.io/password_resets/new
       signup: https://console.10.244.0.34.xip.io/register
-      signup-network: 
-    messages: 
+      signup-network:
+    messages:
     notifications:
-      url: 
+      url:
     protocol: http
     restricted_ips_regex: 10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|169\.254\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.1[6-9]{1}\.\d{1,3}\.\d{1,3}|172\.2[0-9]{1}\.\d{1,3}\.\d{1,3}|172\.3[0-1]{1}\.\d{1,3}\.\d{1,3}
-    saml: 
-    self_service_links_enabled: 
-    signups_enabled: 
+    saml:
+    self_service_links_enabled:
+    signups_enabled:
     smtp:
-      host: 
-      password: 
-      port: 
-      user: 
-    spring_profiles: 
-    tiles: 
-    uaa_base: 
+      host:
+      password:
+      port:
+      user:
+    spring_profiles:
+    tiles:
+    uaa_base:
     uaa_certificate: |
       -----BEGIN CERTIFICATE-----
       MIIDETCCAfmgAwIBAgIJANZuykf1uh3LMA0GCSqGSIb3DQEBBQUAMB8xHTAbBgNV
@@ -2601,7 +2601,7 @@ properties:
       +8sJl/yUUUPwQ6PNYx6cjtlICWJ1G0l0hRa141VXPqSNCmxYS4dp/8ifPCSoLc+k
       9TXFkuGl+86CPTyyMJxyMhEcAGZT
       -----END CERTIFICATE-----
-    url: 
+    url:
   metron_endpoint:
     shared_secret: PLACEHOLDER-LOGGREGATOR-SECRET
   nats:
@@ -2616,11 +2616,11 @@ properties:
     trace: false
     user: nats
   nfs_server:
-    address: 
+    address:
     allow_from_entries:
     - 10.244.0.0/30
     - 10.244.2.0/30
-    share: 
+    share:
   request_timeout_in_seconds: 900
   router:
     requested_route_registration_interval_in_seconds: 20
@@ -2631,7 +2631,7 @@ properties:
   smoke_tests:
     api: api.10.244.0.34.xip.io
     apps_domain: 10.244.0.34.xip.io
-    ginkgo_opts: 
+    ginkgo_opts:
     org: SMOKE_TEST_ORG
     password: admin
     skip_ssl_validation: true
@@ -2640,17 +2640,17 @@ properties:
   ssl:
     skip_cert_verify: true
   support_address: http://support.cloudfoundry.com
-  syslog_daemon_config: 
+  syslog_daemon_config:
   system_domain: 10.244.0.34.xip.io
-  system_domain_organization: 
+  system_domain_organization:
   uaa:
     admin:
       client_secret: admin-secret
     authentication:
       policy:
-        countFailuresWithinSeconds: 
-        lockoutAfterFailures: 
-        lockoutPeriodSeconds: 
+        countFailuresWithinSeconds:
+        lockoutAfterFailures:
+        lockoutPeriodSeconds:
     batch:
       password: batch-password
       username: batch-username
@@ -2723,18 +2723,18 @@ properties:
         qHxf+ZH9BL1gk9Y6kCnbM5R60gfwjyW1/dQPjOzn9N394zd2FJoFHwdq9Qs0wBug
         spULZVNRxq7veq/fzwIDAQAB
         -----END PUBLIC KEY-----
-    ldap: 
-    login: 
+    ldap:
+    login:
     no_ssl: true
     restricted_ips_regex: 10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|169\.254\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.1[6-9]{1}\.\d{1,3}\.\d{1,3}|172\.2[0-9]{1}\.\d{1,3}\.\d{1,3}|172\.3[0-1]{1}\.\d{1,3}\.\d{1,3}
     scim:
-      external_groups: 
+      external_groups:
       userids_enabled: true
       users:
       - admin|admin|scim.write,scim.read,openid,cloud_controller.admin,clients.read,clients.write,doppler.firehose,notification_templates.admin
-    spring_profiles: 
+    spring_profiles:
     url: https://uaa.10.244.0.34.xip.io
-    user: 
+    user:
   uaadb:
     address: 10.244.0.30
     databases:
