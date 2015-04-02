@@ -36,5 +36,29 @@ $ ./bin/find_manifests_for_release.sh cf test/manifests
 ./test/manifests/cf-bosh-lite.yml
 
 $ ./bin/find_manifests_for_release.sh xxx
-<nofiles>
+<no result>
+```
+
+find_cf_manifest_for_api.sh
+---------------------------
+
+Finds CF BOSH manifest for a CF API (`-u uri`); or show all APIs for all CF manifests.
+
+Show all CF APIs for all CF BOSH manifests:
+
+```
+$ ./bin/find_cf_manifest_for_api.sh
+./test/manifests/cf-bosh-lite.yml https://api.10.244.0.34.xip.io
+```
+
+Find a specific CF BOSH manifest for a given API hostname:
+
+```
+$ ./bin/find_cf_manifest_for_api.sh -u api.10.244.0.34.xip.io
+./test/manifests/cf-bosh-lite.yml https://api.10.244.0.34.xip.io
+```
+
+```
+$ ./bin/find_cf_manifest_for_api.sh -u something.unknown.com
+<no result>
 ```

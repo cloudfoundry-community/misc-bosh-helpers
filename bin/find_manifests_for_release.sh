@@ -25,7 +25,7 @@ path=${path:-"."}
     usage
   fi
 
-possible_manifests=$(find ${path} -type f  -name '*.yml')
+possible_manifests=$(./bin/find_manifests.sh ${path})
 for file in ${possible_manifests}; do
   found=$(cat $file | yaml2json | jq -r .releases[].name | grep "^${release_name}$")
   if [[ "${found}X" != "X" ]]; then
