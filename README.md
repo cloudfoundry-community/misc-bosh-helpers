@@ -1,6 +1,21 @@
 Miscellaneous BOSH helper scripts
 =================================
 
+Requirements
+------------
+
+-	bash 3.2+
+-	golang - [install](http://golang.org/doc/install)
+-	BOSH CLI
+-	jq - http://stedolan.github.io/jq/
+-	yaml2json - https://github.com/bronze1man/yaml2json
+
+The latter can be installed with
+
+```
+go get github.com/bronze1man/yaml2json
+```
+
 manifest_bosh_info.sh
 ---------------------
 
