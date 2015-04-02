@@ -103,13 +103,15 @@ Deployment set to `.../misc-bosh-helpers/test/manifests/cf-bosh-lite.yml'
 find_micro_bosh.sh
 ------------------
 
-Find Micro BOSH manifests (like `micro_bosh.yml`\) and the parent folder containing `bosh-workspace.yml`:
+Find Micro BOSH manifests (like `micro_bosh.yml`\), the parent folder containing `bosh-workspace.yml`, and the assigned IP for the Micro BOSH:
 
 ```
 $ ./bin/find_micro_bosh.sh
-.../aws_vpc/micro_bosh.aws_vpc.yml .../aws_vpc
-.../openstack_nova/openstack/micro_bosh.openstack.nova_vip.yml .../openstack_nova/openstack
-.../not-deployed-yet/micro-bosh.yml not-deployed
+.../aws_vpc/micro_bosh.aws_vpc.yml .../aws_vpc 10.10.3.4
+.../openstack_nova/openstack/micro_bosh.openstack.nova_vip.yml .../openstack_nova/openstack 1.2.3.4
+.../not-deployed-yet/micro-bosh.yml not-deployed null
 ```
 
 If a Micro BOSH YAML file is found but no `bosh-deployment.yml` is found in the parent folders, then `not-deployed` is returned as the 2nd item on the result line (see above).
+
+If a Micro BOSH YAML file doesn't yet specify the IP address then `null` is shown.

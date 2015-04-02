@@ -31,6 +31,7 @@ for file in ${possible_manifests}; do
         deployment_dir="not-deployed"
       fi
     fi
-    echo $file $deployment_dir
+    ip=$(cat ${file} | yaml2json | jq -r .network.ip) #also finds .network.vip
+    echo $file $deployment_dir $ip
   fi
 done
