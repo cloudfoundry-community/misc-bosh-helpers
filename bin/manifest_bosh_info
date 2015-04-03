@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function usage {
-  echo "USAGE: ./bin/manifest_bosh_info.sh path/to/manifest.yml"
+  echo "USAGE: ./bin/manifest_bosh_info path/to/manifest.yml"
   echo "Shows information about the BOSH director targeted by the manifest.yml"
   exit 1
 }

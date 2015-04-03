@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function usage {
-  echo "USAGE: ./bin/find_manifests.sh [path]"
+  echo "USAGE: ./bin/find_manifests [path]"
   echo "Finds BOSH manifests YAML files beneath target path"
   exit 1
 }

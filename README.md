@@ -34,56 +34,56 @@ Then add the following to your `~/.bashrc` or `/etc/bash.bashrc` and restart you
 export PATH=$PATH:/usr/local/misc-bosh-helpers/bin
 ```
 
-manifest_bosh_info.sh
----------------------
+manifest_bosh_info
+------------------
 
 Looks up the `director_uuid` from the target manifest in your `~/.bosh_config` and runs `bosh status` against the matching BOSH director.
 
 ```
-$ ./bin/manifest_bosh_info.sh test/manifests/cf-bosh-lite.yml
+$ ./bin/manifest_bosh_info test/manifests/cf-bosh-lite.yml
 ```
 
-find_manifests.sh
------------------
+find_manifests
+--------------
 
 Finds any BOSH deployment manifests within target path and subfolders.
 
 ```
-$ ./bin/find_manifests.sh
+$ ./bin/find_manifests
 ./test/manifests/cf-bosh-lite.yml
 ./test/manifests/cf-monitor-server.yml
 
-$ ./bin/find_manifests.sh test
+$ ./bin/find_manifests test
 ./test/manifests/cf-bosh-lite.yml
 ./test/manifests/cf-monitor-server.yml
 ```
 
-find_manifests_for_release.sh
------------------------------
+find_manifests_for_release
+--------------------------
 
 Finds BOSH manifests within target path and subfolders that use specified release name
 
 ```
-$ ./bin/find_manifests_for_release.sh cf
+$ ./bin/find_manifests_for_release cf
 ./test/manifests/cf-bosh-lite.yml
 ./test/manifests/cf-monitor-server.yml
 
-$ ./bin/find_manifests_for_release.sh monitor-server test/manifests
+$ ./bin/find_manifests_for_release monitor-server test/manifests
 ./test/manifests/cf-monitor-server.yml
 
-$ ./bin/find_manifests_for_release.sh xxx
+$ ./bin/find_manifests_for_release xxx
 <no result>
 ```
 
-find_cf_manifest_for_api.sh
----------------------------
+find_cf_manifest_for_api
+------------------------
 
 Finds CF BOSH manifest for a CF API (`-u uri`); or show all APIs for all CF manifests.
 
 Show all CF APIs for all CF BOSH manifests:
 
 ```
-$ ./bin/find_cf_manifest_for_api.sh
+$ ./bin/find_cf_manifest_for_api
 ./test/manifests/cf-bosh-lite.yml https://api.10.244.0.34.xip.io
 ./test/manifests/cf-monitor-server.yml https://api.10.244.10.34.xip.io
 ```
@@ -91,36 +91,36 @@ $ ./bin/find_cf_manifest_for_api.sh
 Find a specific CF BOSH manifest for a given API hostname:
 
 ```
-$ ./bin/find_cf_manifest_for_api.sh -u api.10.244.0.34.xip.io
+$ ./bin/find_cf_manifest_for_api -u api.10.244.0.34.xip.io
 ./test/manifests/cf-bosh-lite.yml https://api.10.244.0.34.xip.io
 ```
 
 ```
-$ ./bin/find_cf_manifest_for_api.sh -u something.unknown.com
+$ ./bin/find_cf_manifest_for_api -u something.unknown.com
 <no result>
 ```
 
 NOTE: use `awk` to extract the filename from each result line:
 
 ```
-$ ./bin/find_cf_manifest_for_api.sh -u api.10.244.0.34.xip.io | awk '{print $1}'
+$ ./bin/find_cf_manifest_for_api -u api.10.244.0.34.xip.io | awk '{print $1}'
 ./test/manifests/cf-bosh-lite.yml
 ```
 
 Target the discovered BOSH manifest:
 
 ```
-$ bosh deployment $(./bin/find_cf_manifest_for_api.sh -u api.10.244.0.34.xip.io | awk '{print $1}')
+$ bosh deployment $(./bin/find_cf_manifest_for_api -u api.10.244.0.34.xip.io | awk '{print $1}')
 Deployment set to `.../misc-bosh-helpers/test/manifests/cf-bosh-lite.yml'
 ```
 
-find_micro_bosh.sh
-------------------
+find_micro_bosh
+---------------
 
 Find Micro BOSH manifests (like `micro_bosh.yml`\), the parent folder containing `bosh-workspace.yml`, and the assigned IP for the Micro BOSH:
 
 ```
-$ ./bin/find_micro_bosh.sh
+$ ./bin/find_micro_bosh
 .../aws_vpc/micro_bosh.aws_vpc.yml .../aws_vpc 10.10.3.4
 .../openstack_nova/openstack/micro_bosh.openstack.nova_vip.yml .../openstack_nova/openstack 1.2.3.4
 .../not-deployed-yet/micro-bosh.yml not-deployed null
