@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR=$( cd "$( dirname "$0" )" && pwd )
+
 function usage {
   echo "USAGE: ./bin/find_cf_manifest_for_api.sh [-p path] [-u uri]"
   echo "Finds CF BOSH manifest for a CF API (-u uri); or show all APIs for all CF manifests"
@@ -25,7 +27,7 @@ done
 
 path=${path:-"."}
 
-cf_manifests=$(./bin/find_manifests_for_release.sh cf ${path})
+cf_manifests=$($DIR/find_manifests_for_release.sh cf ${path})
 for file in ${cf_manifests}; do
   srv_api_uri=$(cat $file | yaml2json | jq -r ".properties.cc.srv_api_uri")
   if [[ "${api_hostname}X" != "X" ]]; then

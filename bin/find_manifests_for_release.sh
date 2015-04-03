@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR=$( cd "$( dirname "$0" )" && pwd )
+
 function usage {
   echo "USAGE: ./bin/find_manifests_for_release.sh release [path]"
   echo "Finds BOSH manifests beneath target path that use release, e.g. find_manifests_for_release.sh cf"
@@ -25,7 +27,7 @@ path=${path:-"."}
     usage
   fi
 
-possible_manifests=$(./bin/find_manifests.sh ${path})
+possible_manifests=$($DIR/find_manifests.sh ${path})
 for file in ${possible_manifests}; do
   found=$(cat $file | yaml2json | jq -r .releases[].name | grep "^${release_name}$")
   if [[ "${found}X" != "X" ]]; then
