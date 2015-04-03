@@ -20,6 +20,20 @@ The latter can be installed with
 go get github.com/bronze1man/yaml2json
 ```
 
+Installation
+------------
+
+```
+cd /usr/local
+git clone https://github.com/cloudfoundry-community/misc-bosh-helpers.git
+```
+
+Then add the following to your `~/.bashrc` or `/etc/bash.bashrc` and restart your shell:
+
+```
+export PATH=$PATH:/usr/local/misc-bosh-helpers/bin
+```
+
 manifest_bosh_info.sh
 ---------------------
 
