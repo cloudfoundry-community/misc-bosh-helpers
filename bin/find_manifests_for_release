@@ -29,7 +29,7 @@ path=${path:-"."}
 
 possible_manifests=$($DIR/find_manifests ${path})
 for file in ${possible_manifests}; do
-  found=$(cat $file | yaml2json | jq -r .releases[].name | grep "^${release_name}$")
+  found=$(cat $file | yaml2json | jq -r ".releases[]?.name" | grep "^${release_name}$")
   if [[ "${found}X" != "X" ]]; then
     echo $file
   fi

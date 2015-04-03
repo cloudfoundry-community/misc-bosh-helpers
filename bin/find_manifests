@@ -22,8 +22,11 @@ path=${path:-"."}
 
 possible_manifests=$(find ${path} -type f  -name '*.yml')
 for file in ${possible_manifests}; do
-  director_uuid=$(cat ${file} | yaml2json | jq -r .director_uuid)
-  if [[ "${director_uuid}" != "null" ]]; then
-    echo $file
+  yaml2json_error=$(cat ${file} | yaml2json 2>&1 >/dev/null)
+  if [[ "${yaml2json_error}X" == "X" ]]; then
+    director_uuid=$(cat ${file} | yaml2json | jq -r ".director_uuid?")
+    if [[ "${director_uuid}X" != "X" && ! ("${director_uuid}" =~ "jq: error") ]]; then
+      echo $file
+    fi
   fi
 done
