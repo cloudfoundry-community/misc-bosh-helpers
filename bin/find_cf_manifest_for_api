@@ -30,11 +30,13 @@ path=${path:-"."}
 cf_manifests=$($DIR/find_manifests_for_release cf ${path})
 for file in ${cf_manifests}; do
   srv_api_uri=$(cat $file | yaml2json | jq -r ".properties.cc.srv_api_uri")
-  if [[ "${api_hostname}X" != "X" ]]; then
-    if [[ $srv_api_uri =~ $api_hostname ]]; then
+  if [[ "${srv_api_uri}" != "null" ]]; then
+    if [[ "${api_hostname}X" != "X" ]]; then
+      if [[ $srv_api_uri =~ $api_hostname ]]; then
+        echo $file $srv_api_uri
+      fi
+    else
       echo $file $srv_api_uri
     fi
-  else
-    echo $file $srv_api_uri
   fi
 done
