@@ -24,8 +24,9 @@ possible_manifests=$(find ${path} -type f  -name '*.yml')
 for file in ${possible_manifests}; do
   yaml2json_error=$(cat ${file} | yaml2json 2>&1 >/dev/null)
   if [[ "${yaml2json_error}X" == "X" ]]; then
-    cloud_plugin=$(cat ${file} | yaml2json | jq -r ".cloud?.plugin?")
-    if [[ "${cloud_plugin}" != "null" && "${cloud_plugin}X" != "X" ]]; then
+    ruby_micro=$(cat ${file} | yaml2json | jq -r ".cloud?.plugin?")
+    golang_micro=$(cat ${file} | yaml2json | jq -r ".cloud_provider.template.name")
+    if [[ "${ruby_micro}" != "null" && "${ruby_micro}X" != "X" ]]; then
       deployment_dir=$(dirname $file)
       if [[ ! -f "${deployment_dir}/bosh-deployments.yml" ]]; then
         deployment_dir=$(dirname $deployment_dir)
@@ -33,8 +34,15 @@ for file in ${possible_manifests}; do
           deployment_dir="not-deployed"
         fi
       fi
-      ip=$(cat ${file} | yaml2json | jq -r ".network | .ip // .vip")
-      echo $file $deployment_dir $ip
+      ip=$(cat ${file} | yaml2json | jq -r ".network | .vip // .ip")
+      echo $file ruby $deployment_dir $ip
+    elif [[ "${golang_micro}" != "null" && "${golang_micro}X" != "X" ]]; then
+      deployment_dir=$(dirname $file)
+      if [[ ! -f "${deployment_dir}/deployment.json" ]]; then
+        deployment_dir="not-deployed"
+      fi
+      ips=$(cat ${file} | yaml2json | jq -r ".jobs[0].networks[]?.static_ips[]?")
+      echo $file golang $deployment_dir $ips
     fi
   fi
 done
