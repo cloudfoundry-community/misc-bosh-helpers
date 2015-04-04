@@ -126,7 +126,7 @@ $ find_micro_bosh
 .../not-deployed-yet/micro-bosh.yml not-deployed null
 ```
 
-If a Micro BOSH YAML file is found but no `bosh-deployment.yml` is found in the parent folders, then `not-deployed` is returned as the 2nd item on the result line (see above).
+If a Micro BOSH YAML file is found but no `bosh-deployments.yml` is found in the parent folders, then `not-deployed` is returned as the 2nd item on the result line (see above).
 
 If a Micro BOSH YAML file doesn't yet specify the IP address then `null` is shown.
 

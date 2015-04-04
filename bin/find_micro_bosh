@@ -27,9 +27,9 @@ for file in ${possible_manifests}; do
     cloud_plugin=$(cat ${file} | yaml2json | jq -r ".cloud?.plugin?")
     if [[ "${cloud_plugin}" != "null" && "${cloud_plugin}X" != "X" ]]; then
       deployment_dir=$(dirname $file)
-      if [[ ! -f "${deployment_dir}/bosh-deployment.yml" ]]; then
+      if [[ ! -f "${deployment_dir}/bosh-deployments.yml" ]]; then
         deployment_dir=$(dirname $deployment_dir)
-        if [[ ! -f "${deployment_dir}/bosh-deployment.yml" ]]; then
+        if [[ ! -f "${deployment_dir}/bosh-deployments.yml" ]]; then
           deployment_dir="not-deployed"
         fi
       fi
